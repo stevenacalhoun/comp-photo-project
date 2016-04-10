@@ -1,7 +1,7 @@
 import time
 
 # Pi control
-pi = False
+pi = True
 if pi:
   import wiringpi
   from variables import *
