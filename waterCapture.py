@@ -12,7 +12,10 @@ def captureImage(camera, captureType):
   camera.capture_image('output/' + fileName + '.jpg')
 
 def main():
-  wiringpi.wiringPiSetupGpio()
+  if pi:
+    wiringpi.wiringPiSetupGpio()
+  else:
+    print "Can't setup GPIO, not pi"
 
   while True:
     # Setup camera
