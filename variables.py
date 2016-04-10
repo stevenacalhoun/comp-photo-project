@@ -1,0 +1,10 @@
+# Various wait times
+FALL_TIME = 1/2.0
+BOUNCE_TIME = 1/1.0
+COLLISION_FALL_TIME = 1/1.0
+COLLISION_TIME = 1/1.0
+CUSTOM_TIME = 1/1.0
+DROP_WAIT = 1/1.0
+
+# Pin for solenoid
+SOLENOID_PIN = 9
