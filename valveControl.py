@@ -3,7 +3,7 @@ import time
 # Pi control
 pi = False
 if pi:
-  import wiringpi2 as wiringpi
+  import wiringpi
   from variables import *
 
 # Drop a drop
@@ -17,7 +17,6 @@ def dropWater(timeOverride=0):
     print "Dropping Water"
 
     # Setup pin
-    wiringpi.wiringPiSetupGpio()
     wiringpi.pinMode(SOLENOID_PIN, 1)
 
     # Open flow, wait, close flow

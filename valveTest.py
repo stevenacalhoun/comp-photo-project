@@ -10,6 +10,9 @@ dropWait = DROP_WAIT
 
 def main():
   global fallTime, bounceTime, collisionFallTime, collisionTime, customTime, dropWait
+
+  wiringpi.wiringPiSetupGpio()
+
   while True:
     print
     print "1) Test Fall"

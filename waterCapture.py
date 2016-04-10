@@ -12,6 +12,8 @@ def captureImage(camera, captureType):
   camera.capture_image('output/' + fileName + '.jpg')
 
 def main():
+  wiringpi.wiringPiSetupGpio()
+
   while True:
     # Setup camera
     camera = piggyphoto.Camera()
