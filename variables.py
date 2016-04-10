@@ -7,4 +7,4 @@ CUSTOM_TIME = 1/1.0
 DROP_WAIT = 1/1.0
 
 # Pin for solenoid
-SOLENOID_PIN = 9
+SOLENOID_PIN = 17
