@@ -3,6 +3,7 @@ import piggyphoto
 
 # Timing
 import time
+from valveControl import *
 from variables import *
 
 # Snap an image
