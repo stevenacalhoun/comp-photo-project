@@ -11,7 +11,10 @@ dropWait = DROP_WAIT
 def main():
   global fallTime, bounceTime, collisionFallTime, collisionTime, customTime, dropWait
 
-  wiringpi.wiringPiSetupGpio()
+  if pi:
+    wiringpi.wiringPiSetupGpio()
+  else:
+    print "Can't setup GPIO, not pi"
 
   while True:
     print
@@ -20,6 +23,7 @@ def main():
     print "3) Test Collision"
     print "4) Test Other"
     print "s) Set time"
+    print "o) Open valve"
     choice = raw_input("Selection: ")
     print
 
@@ -51,6 +55,11 @@ def main():
 
     elif choice == 's':
       setTime()
+
+    elif choice == 'o':
+      openValve()
+      c = raw_input("Hit enter to close")
+      closeValve()
 
 def setTime():
   global fallTime, bounceTime, collisionFallTime, collisionTime, customTime, dropWait
