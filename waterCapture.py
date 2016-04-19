@@ -7,10 +7,11 @@ from valveControl import *
 from variables import *
 from dropboxConfig import DropboxInstance
 
-dropboxInstance = None
+dropboxInstance = DropboxInstance()
 
 # Snap an image
 def captureImage(camera, captureType):
+  global dropboxInstance
   print "Snapping " + captureType
   fileName = time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".json"
   imageName = 'output/' + fileName + '.jpg'
@@ -19,9 +20,6 @@ def captureImage(camera, captureType):
   dropboxInstance.saveFile(imageName)
 
 def main():
-  global dropboxInstance
-  dropboxInstance = DropboxInstance()
-
   if pi:
     wiringpi.wiringPiSetupGpio()
   else:
