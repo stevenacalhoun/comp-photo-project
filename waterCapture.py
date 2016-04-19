@@ -7,17 +7,25 @@ from valveControl import *
 from variables import *
 from dropboxConfig import DropboxInstance
 
+import os
+
 dropboxInstance = DropboxInstance()
 
 # Snap an image
 def captureImage(camera, captureType):
   global dropboxInstance
   print "Snapping " + captureType
-  fileName = time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".json"
-  imageName = 'output/' + fileName + '.jpg'
-  camera.capture_image(imageName)
+
+  # Capture image
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
+  camera.capture_image(fileName)
   camera.close()
-  dropboxInstance.saveFile(imageName)
+
+  # Upload to dropbox
+  dropboxInstance.saveFile(fileName)
+
+  # Delete locally
+  os.remove(fileName)
 
 def main():
   if pi:
