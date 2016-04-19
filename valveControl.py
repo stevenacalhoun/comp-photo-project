@@ -4,7 +4,8 @@ import time
 pi = False
 if pi:
   import wiringpi
-  from variables import *
+  
+from variables import *
 
 # Drop a drop
 def dropWater(timeOverride=0):

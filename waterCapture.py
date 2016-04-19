@@ -15,9 +15,11 @@ def captureImage(camera, captureType):
   fileName = time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".json"
   imageName = 'output/' + fileName + '.jpg'
   camera.capture_image(imageName)
+  camera.close()
   dropboxInstance.saveFile(imageName)
 
 def main():
+  global dropboxInstance
   dropboxInstance = DropboxInstance()
 
   if pi:
@@ -63,9 +65,6 @@ def main():
       dropWater()
       time.sleep(CUSTOM_TIME)
       captureImage(camera, "custom")
-
-    # Only way to take a new picture
-    camera.close()
 
 if __name__ == "__main__":
   main()
