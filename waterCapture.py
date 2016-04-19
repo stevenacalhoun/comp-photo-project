@@ -5,14 +5,21 @@ import piggyphoto
 import time
 from valveControl import *
 from variables import *
+from dropboxConfig import DropboxInstance
+
+dropboxInstance = None
 
 # Snap an image
 def captureImage(camera, captureType):
   print "Snapping " + captureType
   fileName = time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".json"
-  camera.capture_image('output/' + fileName + '.jpg')
+  imageName = 'output/' + fileName + '.jpg'
+  camera.capture_image(imageName)
+  dropboxInstance.saveFile(imageName)
 
 def main():
+  dropboxInstance = DropboxInstance()
+
   if pi:
     wiringpi.wiringPiSetupGpio()
   else:
