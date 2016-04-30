@@ -3,13 +3,29 @@ import piggyphoto
 
 # Timing
 import time
+from valveControl import *
 from variables import *
+from dropboxConfig import DropboxInstance
+
+import os
+
+dropboxInstance = DropboxInstance()
 
 # Snap an image
 def captureImage(camera, captureType):
+  global dropboxInstance
   print "Snapping " + captureType
-  fileName = time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".json"
-  camera.capture_image('output/' + fileName + '.jpg')
+
+  # Capture image
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
+  camera.capture_image(fileName)
+  camera.close()
+
+  # Upload to dropbox
+  dropboxInstance.saveFile(fileName)
+
+  # Delete locally
+  os.remove(fileName)
 
 def main():
   if pi:
@@ -55,9 +71,6 @@ def main():
       dropWater()
       time.sleep(CUSTOM_TIME)
       captureImage(camera, "custom")
-
-    # Only way to take a new picture
-    camera.close()
 
 if __name__ == "__main__":
   main()
