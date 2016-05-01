@@ -1,4 +1,4 @@
 *.jpg
-*.pyc
+**/*.pyc
 dropboxSecrets.py
 twitterSecrets.py

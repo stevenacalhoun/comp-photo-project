@@ -1,5 +1,6 @@
 # Camera control
-import piggyphoto
+# import piggyphoto
+import cameraControl
 
 # Timing
 import time
@@ -36,7 +37,7 @@ def main():
 
   while True:
     # Setup camera
-    camera = piggyphoto.Camera()
+    camera = cameraControl.Camera()
     # camera.leave_locked()
 
     print
