@@ -13,19 +13,19 @@ dropboxInstance = DropboxInstance()
 
 # Snap an image
 def captureImage(camera, captureType):
-  global dropboxInstance
-  print "Snapping " + captureType
-
-  # Capture image
-  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
-  camera.capture_image(fileName)
+  camera.capture_image("output/out.jpg")
   camera.close()
 
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
+
+  return fileName
+
+def saveToDropbox(fileName):
   # Upload to dropbox
-  dropboxInstance.saveFile(fileName)
+  dropboxInstance.saveFile('output/out.jpg', fileName)
 
   # Delete locally
-  os.remove(fileName)
+  os.remove('output/out.jpg')
 
 def main():
   if pi:
@@ -36,7 +36,7 @@ def main():
   while True:
     # Setup camera
     camera = piggyphoto.Camera()
-    camera.leave_locked()
+    # camera.leave_locked()
 
     print
     print "1) Capture Fall"
@@ -50,13 +50,15 @@ def main():
       # Drop, wait, snap
       dropWater()
       time.sleep(FALL_TIME)
-      captureImage(camera, "fall")
+      fileName = captureImage(camera, "fall")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
 
     elif choice == '2':
       # Drop, wait, snap
       dropWater()
       time.sleep(BOUNCE_TIME)
-      captureImage(camera, "bounce")
+      fileName = captureImage(camera, "bounce")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
 
     elif choice == '3':
       # Drop, wait, drop, wait, snap
@@ -64,13 +66,13 @@ def main():
       time.sleep(COLLISION_FALL_TIME)
       dropWater()
       time.sleep(COLLISION_TIME)
-      captureImage(camera, "collision")
+      fileName = captureImage(camera, "collision")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
 
     elif choice == '4':
       # Drop, wait, snap
-      dropWater()
-      time.sleep(CUSTOM_TIME)
-      captureImage(camera, "custom")
+      fileName = captureImage(camera, "custom")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
 
 if __name__ == "__main__":
   main()
