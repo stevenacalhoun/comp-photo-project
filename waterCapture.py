@@ -12,12 +12,12 @@ import os
 dropboxInstance = DropboxInstance()
 
 # Snap an image
-def captureImage(camera, captureType):
+def captureImage(camera, captureType, captureTime):
   global dropboxInstance
   print "Snapping " + captureType
 
   # Capture image
-  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + '_' + str(captureTime) + ".jpg"
   camera.capture_image(fileName)
   camera.close()
 
@@ -50,13 +50,13 @@ def main():
       # Drop, wait, snap
       dropWater()
       time.sleep(FALL_TIME)
-      captureImage(camera, "fall")
+      captureImage(camera, "fall", FALL_TIME)
 
     elif choice == '2':
       # Drop, wait, snap
       dropWater()
       time.sleep(BOUNCE_TIME)
-      captureImage(camera, "bounce")
+      captureImage(camera, "bounce", BOUNCE_TIME)
 
     elif choice == '3':
       # Drop, wait, drop, wait, snap
@@ -64,13 +64,13 @@ def main():
       time.sleep(COLLISION_FALL_TIME)
       dropWater()
       time.sleep(COLLISION_TIME)
-      captureImage(camera, "collision")
+      captureImage(camera, "collision", COLLISION_TIME)
 
     elif choice == '4':
       # Drop, wait, snap
       dropWater()
       time.sleep(CUSTOM_TIME)
-      captureImage(camera, "custom")
+      captureImage(camera, "custom", CUSTOM_TIME)
 
 if __name__ == "__main__":
   main()
