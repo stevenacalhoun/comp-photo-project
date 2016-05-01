@@ -53,6 +53,7 @@ def main():
       # Drop, wait, snap
       dropWater()
       wait(FALL_TIME)
+      triggerRemote()
       # fileName = captureImage(camera, "fall", FALL_TIME)
       # dropboxInstance.saveFile('output/out.jpg', fileName)
 
@@ -60,6 +61,7 @@ def main():
       # Drop, wait, snap
       dropWater()
       wait(BOUNCE_TIME)
+      triggerRemote()
       # fileName = captureImage(camera, "bounce", BOUNCE_TIME)
       # dropboxInstance.saveFile('output/out.jpg', fileName)
 
@@ -69,6 +71,7 @@ def main():
       wait(COLLISION_FALL_TIME)
       dropWater()
       wait(COLLISION_TIME)
+      triggerRemote()
       # fileName = captureImage(camera, "collision", COLLISION_TIME)
       # dropboxInstance.saveFile('output/out.jpg', fileName)
 

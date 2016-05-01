@@ -8,7 +8,7 @@ def triggerRemote():
   if PI_SETUP:
     wiringpi.pinMode(CAMERA_PIN, 1)
     wiringpi.digitalWrite(CAMERA_PIN, 1)
-    wait(2)
+    wait(0.1)
     wiringpi.digitalWrite(CAMERA_PIN, 0)
   else:
     print "Can't trigger remote, not pi"
