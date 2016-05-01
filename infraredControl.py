@@ -1,0 +1,13 @@
+from variables import *
+
+if PI_SETUP:
+  import wiringpi
+  wiringpi.pinMode(CAMERA_PIN, 1)
+
+def triggerRemote():
+  if PI_SETUP:
+    wiringpi.digitalWrite(CAMERA_PIN, 1)
+    wait(0.1)
+    wiringpi.digitalWrite(CAMERA_PIN, 0)
+  else:
+    print "Can't trigger remote, not pi"

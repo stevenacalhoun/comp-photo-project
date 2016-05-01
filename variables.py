@@ -11,6 +11,7 @@ DROP_WAIT = 10/1000.0
 
 # Pin for solenoid
 SOLENOID_PIN = 17
+CAMERA_PIN = 18
 
 # Delay for camera
 CAMERA_DELAY = 500/1000.0
