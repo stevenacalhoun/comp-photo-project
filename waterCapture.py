@@ -14,13 +14,10 @@ dropboxInstance = DropboxInstance()
 
 # Snap an image
 def captureImage(camera, captureType, captureTime):
-  global dropboxInstance
-  print "Snapping " + captureType
-
-  # Capture image
-  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + '_' + str(captureTime) + ".jpg"
-  camera.capture_image(fileName)
+  camera.capture_image("output/out.jpg")
   camera.close()
+
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + '_' + str(captureTime) + ".jpg"
 
   return fileName
 
