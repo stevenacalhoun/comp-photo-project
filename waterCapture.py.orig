@@ -1,0 +1,107 @@
+# Camera control
+import piggyphoto
+
+# Timing
+import time
+from valveControl import *
+from variables import *
+from dropboxConfig import DropboxInstance
+
+import os
+
+dropboxInstance = DropboxInstance()
+
+# Snap an image
+<<<<<<< HEAD
+def captureImage(camera, captureType, captureTime):
+  global dropboxInstance
+  print "Snapping " + captureType
+
+  # Capture image
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + '_' + str(captureTime) + ".jpg"
+  camera.capture_image(fileName)
+  camera.close()
+=======
+def captureImage(camera, captureType):
+  camera.capture_image("output/out.jpg")
+  camera.close()
+
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
+>>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+
+  return fileName
+
+def saveToDropbox(fileName):
+  # Upload to dropbox
+  dropboxInstance.saveFile('output/out.jpg', fileName)
+
+  # Delete locally
+  os.remove('output/out.jpg')
+
+def main():
+  if pi:
+    wiringpi.wiringPiSetupGpio()
+  else:
+    print "Can't setup GPIO, not pi"
+
+  while True:
+    # Setup camera
+    camera = piggyphoto.Camera()
+    # camera.leave_locked()
+
+    print
+    print "1) Capture Fall"
+    print "2) Capture Bounce"
+    print "3) Capture Collision"
+    print "4) Capture Custom"
+    choice = raw_input("Selection: ")
+    print
+
+    if choice == '1':
+      # Drop, wait, snap
+      dropWater()
+      time.sleep(FALL_TIME)
+<<<<<<< HEAD
+      captureImage(camera, "fall", FALL_TIME)
+=======
+      fileName = captureImage(camera, "fall")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
+>>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+
+    elif choice == '2':
+      # Drop, wait, snap
+      dropWater()
+      time.sleep(BOUNCE_TIME)
+<<<<<<< HEAD
+      captureImage(camera, "bounce", BOUNCE_TIME)
+=======
+      fileName = captureImage(camera, "bounce")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
+>>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+
+    elif choice == '3':
+      # Drop, wait, drop, wait, snap
+      dropWater()
+      time.sleep(COLLISION_FALL_TIME)
+      dropWater()
+      time.sleep(COLLISION_TIME)
+<<<<<<< HEAD
+      captureImage(camera, "collision", COLLISION_TIME)
+
+    elif choice == '4':
+      # Drop, wait, snap
+      dropWater()
+      time.sleep(CUSTOM_TIME)
+      captureImage(camera, "custom", CUSTOM_TIME)
+=======
+      fileName = captureImage(camera, "collision")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
+
+    elif choice == '4':
+      # Drop, wait, snap
+      fileName = captureImage(camera, "custom")
+      dropboxInstance.saveFile('output/out.jpg', fileName)
+>>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+
+if __name__ == "__main__":
+  main()

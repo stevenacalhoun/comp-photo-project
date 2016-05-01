@@ -1,0 +1,19 @@
+# Various wait times
+FALL_TIME = 150/1000.0
+BOUNCE_TIME = 1/1.0
+COLLISION_FALL_TIME = 70/1000.0
+COLLISION_TIME = 150/1000.0
+CUSTOM_TIME = 1/1.0
+<<<<<<< HEAD
+DROP_WAIT = 8/1000.0
+=======
+
+# Wait for individual drops
+DROP_WAIT = 8/1.0
+>>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+
+# Pin for solenoid
+SOLENOID_PIN = 17
+
+# Delay for camera
+CAMERA_DELAY = 500/1000.0
