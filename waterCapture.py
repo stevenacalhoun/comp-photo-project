@@ -6,7 +6,7 @@ import time
 from valveControl import *
 from variables import *
 from dropboxConfig import DropboxInstance
-from utilites import *
+from utilities import *
 
 import os
 
