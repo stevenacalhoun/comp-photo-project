@@ -1,5 +1,6 @@
 import time
 from variables import *
+from utilities import *
 
 # Pi control
 if PI_SETUP:
@@ -17,7 +18,7 @@ def dropWater(timeOverride=0):
   print "Dropping Water"
 
   # Setup pin
-  if pi:
+  if PI_SETUP:
     wiringpi.pinMode(SOLENOID_PIN, 1)
   else:
     print "Can't setup pin, not pi"
@@ -29,13 +30,13 @@ def dropWater(timeOverride=0):
 
 
 def openValve():
-  if pi:
+  if PI_SETUP:
     wiringpi.digitalWrite(SOLENOID_PIN, 1)
   else:
     print "Can't open, not pi"
 
 def closeValve():
-  if pi:
+  if PI_SETUP:
     wiringpi.digitalWrite(SOLENOID_PIN, 0)
   else:
     print "Can't close, not pi"

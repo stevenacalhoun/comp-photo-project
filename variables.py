@@ -7,7 +7,7 @@ CUSTOM_TIME = 1/1.0
 
 
 # Wait for individual drops
-DROP_WAIT = 8/1.0
+DROP_WAIT = 8/1000.0
 
 # Pin for solenoid
 SOLENOID_PIN = 17
@@ -17,5 +17,5 @@ CAMERA_DELAY = 500/1000.0
 
 # Variables
 CUSTOM_SLEEP=True
-PI_SETUP=False
+PI_SETUP=True
 DEBUG=True
