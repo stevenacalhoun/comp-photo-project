@@ -6,6 +6,7 @@ import time
 from valveControl import *
 from variables import *
 from dropboxConfig import DropboxInstance
+from utilites import *
 
 import os
 
@@ -28,7 +29,7 @@ def saveToDropbox(fileName):
   os.remove('output/out.jpg')
 
 def main():
-  if pi:
+  if PI_SETUP:
     wiringpi.wiringPiSetupGpio()
   else:
     print "Can't setup GPIO, not pi"
@@ -49,23 +50,23 @@ def main():
     if choice == '1':
       # Drop, wait, snap
       dropWater()
-      time.sleep(FALL_TIME)
+      wait(FALL_TIME)
       fileName = captureImage(camera, "fall")
       dropboxInstance.saveFile('output/out.jpg', fileName)
 
     elif choice == '2':
       # Drop, wait, snap
       dropWater()
-      time.sleep(BOUNCE_TIME)
+      wait(BOUNCE_TIME)
       fileName = captureImage(camera, "bounce")
       dropboxInstance.saveFile('output/out.jpg', fileName)
 
     elif choice == '3':
       # Drop, wait, drop, wait, snap
       dropWater()
-      time.sleep(COLLISION_FALL_TIME)
+      wait(COLLISION_FALL_TIME)
       dropWater()
-      time.sleep(COLLISION_TIME)
+      wait(COLLISION_TIME)
       fileName = captureImage(camera, "collision")
       dropboxInstance.saveFile('output/out.jpg', fileName)
 

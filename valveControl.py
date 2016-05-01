@@ -1,10 +1,10 @@
 import time
+from variables import *
 
 # Pi control
-pi = False
-if pi:
+if PI_SETUP:
   import wiringpi
-  
+
 from variables import *
 
 # Drop a drop
@@ -24,7 +24,7 @@ def dropWater(timeOverride=0):
 
   # Open flow, wait, close flow
   openValve()
-  time.sleep(waitTime)
+  wait(waitTime)
   closeValve()
 
 
