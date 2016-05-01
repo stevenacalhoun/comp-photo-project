@@ -12,7 +12,7 @@ from infraredControl import *
 
 import os
 
-dropboxInstance = DropboxInstance()
+#dropboxInstance = DropboxInstance()
 
 # Snap an image
 def captureImage(camera, captureType, captureTime):
