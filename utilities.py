@@ -2,7 +2,7 @@ import time
 from variables import *
 
 def wait(amount, customSleeping=CUSTOM_SLEEP):
-  if debug:
+  if DEBUG:
     print "Waiting " + str(amount)
 
   start = time.time()
@@ -15,7 +15,7 @@ def wait(amount, customSleeping=CUSTOM_SLEEP):
 
   elapsedTime = time.time() - start
 
-  if debug:
+  if DEBUG:
     print "Waited  " + str(elapsedTime)
 
 if __name__ == "__main__":
