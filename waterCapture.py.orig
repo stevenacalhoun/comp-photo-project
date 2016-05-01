@@ -6,6 +6,7 @@ import time
 from valveControl import *
 from variables import *
 from dropboxConfig import DropboxInstance
+from utilites import *
 
 import os
 
@@ -27,7 +28,7 @@ def captureImage(camera, captureType):
   camera.close()
 
   fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + ".jpg"
->>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+>>>>>>> 913f1f93749595fbcd9a2f57f2688536889d9146
 
   return fileName
 
@@ -39,7 +40,7 @@ def saveToDropbox(fileName):
   os.remove('output/out.jpg')
 
 def main():
-  if pi:
+  if PI_SETUP:
     wiringpi.wiringPiSetupGpio()
   else:
     print "Can't setup GPIO, not pi"
@@ -60,32 +61,34 @@ def main():
     if choice == '1':
       # Drop, wait, snap
       dropWater()
-      time.sleep(FALL_TIME)
 <<<<<<< HEAD
+      time.sleep(FALL_TIME)
       captureImage(camera, "fall", FALL_TIME)
 =======
+      wait(FALL_TIME)
       fileName = captureImage(camera, "fall")
       dropboxInstance.saveFile('output/out.jpg', fileName)
->>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+>>>>>>> 913f1f93749595fbcd9a2f57f2688536889d9146
 
     elif choice == '2':
       # Drop, wait, snap
       dropWater()
-      time.sleep(BOUNCE_TIME)
 <<<<<<< HEAD
+      time.sleep(BOUNCE_TIME)
       captureImage(camera, "bounce", BOUNCE_TIME)
 =======
+      wait(BOUNCE_TIME)
       fileName = captureImage(camera, "bounce")
       dropboxInstance.saveFile('output/out.jpg', fileName)
->>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+>>>>>>> 913f1f93749595fbcd9a2f57f2688536889d9146
 
     elif choice == '3':
       # Drop, wait, drop, wait, snap
       dropWater()
-      time.sleep(COLLISION_FALL_TIME)
+      wait(COLLISION_FALL_TIME)
       dropWater()
-      time.sleep(COLLISION_TIME)
 <<<<<<< HEAD
+      time.sleep(COLLISION_TIME)
       captureImage(camera, "collision", COLLISION_TIME)
 
     elif choice == '4':
@@ -94,6 +97,7 @@ def main():
       time.sleep(CUSTOM_TIME)
       captureImage(camera, "custom", CUSTOM_TIME)
 =======
+      wait(COLLISION_TIME)
       fileName = captureImage(camera, "collision")
       dropboxInstance.saveFile('output/out.jpg', fileName)
 
@@ -101,7 +105,7 @@ def main():
       # Drop, wait, snap
       fileName = captureImage(camera, "custom")
       dropboxInstance.saveFile('output/out.jpg', fileName)
->>>>>>> 5ec52c7550b30143e18d9d3e01450b3e86a88319
+>>>>>>> 913f1f93749595fbcd9a2f57f2688536889d9146
 
 if __name__ == "__main__":
   main()

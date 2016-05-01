@@ -6,7 +6,16 @@ COLLISION_TIME = 20/1000.0
 CUSTOM_TIME = 1/1.0
 
 
-DROP_WAIT = 10/1000.0
+# Wait for individual drops
+DROP_WAIT = 8/1.0
 
 # Pin for solenoid
 SOLENOID_PIN = 17
+
+# Delay for camera
+CAMERA_DELAY = 500/1000.0
+
+# Variables
+CUSTOM_SLEEP=True
+PI_SETUP=False
+DEBUG=True

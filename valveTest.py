@@ -1,5 +1,6 @@
 from valveControl import *
 from variables import *
+from utilites import *
 
 fallTime = FALL_TIME
 bounceTime = BOUNCE_TIME
@@ -11,7 +12,7 @@ dropWait = DROP_WAIT
 def main():
   global fallTime, bounceTime, collisionFallTime, collisionTime, customTime, dropWait
 
-  if pi:
+  if PI_SETUP:
     wiringpi.wiringPiSetupGpio()
   else:
     print "Can't setup GPIO, not pi"
@@ -30,27 +31,27 @@ def main():
     if choice == '1':
       # Drop, wait, snap
       dropWater(dropWait)
-      time.sleep(fallTime)
+      wait(fallTime)
       print "Capture"
 
     elif choice == '2':
       # Drop, wait, snap
       dropWater(dropWait)
-      time.sleep(bounceTime)
+      wait(bounceTime)
       print "Capture"
 
     elif choice == '3':
       # Drop, wait, drop, wait, snap
       dropWater(dropWait)
-      time.sleep(collisionFallTime)
+      wait(collisionFallTime)
       dropWater(dropWait)
-      time.sleep(collisionTime)
+      wait(collisionTime)
       print "Capture"
 
     elif choice == '4':
       # Drop, wait, snap
       dropWater(dropWait)
-      time.sleep(customTime)
+      wait(customTime)
       print "Capture"
 
     elif choice == 's':

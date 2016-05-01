@@ -2,7 +2,12 @@ import time
 from variables import *
 
 # Pi control
+<<<<<<< HEAD
+pi = True 
+if pi:
+=======
 if PI_SETUP:
+>>>>>>> 913f1f93749595fbcd9a2f57f2688536889d9146
   import wiringpi
 
 from variables import *
