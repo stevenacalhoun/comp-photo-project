@@ -3,10 +3,10 @@ from utilities import *
 
 if PI_SETUP:
   import wiringpi
-  wiringpi.pinMode(CAMERA_PIN, 1)
 
 def triggerRemote():
   if PI_SETUP:
+    wiringpi.pinMode(CAMERA_PIN, 1)
     wiringpi.digitalWrite(CAMERA_PIN, 1)
     wait(2)
     wiringpi.digitalWrite(CAMERA_PIN, 0)
