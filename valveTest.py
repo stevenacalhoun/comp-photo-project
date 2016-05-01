@@ -1,6 +1,6 @@
 from valveControl import *
 from variables import *
-from utilites import *
+from utilities import *
 
 fallTime = FALL_TIME
 bounceTime = BOUNCE_TIME
