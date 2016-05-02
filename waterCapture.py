@@ -10,6 +10,9 @@ import cameraControl
 import os
 import sys
 
+if variables.PI_SETUP:
+  import wiringpi
+
 def main():
   utilities.init()
 
@@ -27,6 +30,7 @@ def main():
     print "s) Change times"
     print "o) Open valve"
     print "c) Close valve"
+    print "p) Print variables"
     print "q) Quit"
     choice = raw_input("Selection: ")
     print
@@ -61,10 +65,13 @@ def main():
       utilities.setTime()
 
     elif choice == 'o':
-      openValve()
+      valveControl.openValve()
 
     elif choice == 'c':
-      closeValve()
+      valveControl.closeValve()
+
+    elif choice == 'p':
+      utilities.printTimeSettings()
 
     elif choice == 'q':
       utilities.printTimeSettings()

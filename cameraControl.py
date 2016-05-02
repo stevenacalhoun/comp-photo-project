@@ -5,6 +5,10 @@ import ctypes
 from ctypes import byref
 
 from variables import *
+import utilities
+
+if PI_SETUP:
+  import wiringpi
 
 if sys.platform == 'darwin':
     libgphoto2dll = 'libgphoto2.dylib'
@@ -144,7 +148,7 @@ def triggerRemote():
   if PI_SETUP:
     wiringpi.pinMode(CAMERA_PIN, 1)
     wiringpi.digitalWrite(CAMERA_PIN, 1)
-    wait(0.1)
+    utilities.wait(0.1)
     wiringpi.digitalWrite(CAMERA_PIN, 0)
   else:
     print "Can't trigger remote, not pi"
