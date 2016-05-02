@@ -18,5 +18,5 @@ CAMERA_DELAY = 500/1000.0
 
 # Variables
 CUSTOM_SLEEP=True
-PI_SETUP=True
-DEBUG=True
+PI_SETUP=False
+DEBUG=False

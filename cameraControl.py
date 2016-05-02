@@ -4,6 +4,8 @@ import re
 import ctypes
 from ctypes import byref
 
+from variables import *
+
 if sys.platform == 'darwin':
     libgphoto2dll = 'libgphoto2.dylib'
     os.system("killall PTPCamera")
@@ -127,6 +129,25 @@ def _check_result(result):
         message = gp.gp_result_as_string(result)
         raise libgphoto2error(result, message)
     return result
+
+# Snap an image
+def captureImage(camera, captureType, captureTime):
+  camera.capture_image("output/out.jpg")
+  camera.close()
+
+  fileName = 'output/' + time.strftime("%Y_%m_%d-%H_%M_%S") + "-" + captureType + '_' + str(captureTime) + ".jpg"
+
+  return fileName
+
+# Trigger inrared camera remote
+def triggerRemote():
+  if PI_SETUP:
+    wiringpi.pinMode(CAMERA_PIN, 1)
+    wiringpi.digitalWrite(CAMERA_PIN, 1)
+    wait(0.1)
+    wiringpi.digitalWrite(CAMERA_PIN, 0)
+  else:
+    print "Can't trigger remote, not pi"
 
 if __name__ == "__main__":
     camera = Camera()
